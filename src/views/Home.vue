@@ -1,14 +1,22 @@
 <template>
   <div class="home">
     <h1>Adopt a new pet.</h1>
-    <p>There are currently {{petno}} available</p>
+    <p>There are currently {{ petno }} available</p>
     <div class="adopt">
       <img
         src="../assets/relaxed-cat-looking-camera-golden-260nw-632318627.jpg"
         alt="cute cat"
       />
     </div>
-
+    <b-alert
+      :show="dismissCountDown"
+      dismissible
+      variant="success"
+      @dismissed="dismissCountDown = 0"
+      @dismiss-count-down="countDownChanged"
+    >
+     Pet was added succesfully
+    </b-alert>
     <b-button @click="toggleForm" size="lg">Add a Pet</b-button>
 
     <b-form @submit.prevent="SubmitForm" v-if="isFormOpen">
@@ -39,7 +47,9 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-button type="submit" variant="primary">Submit</b-button>
+      <b-button @click="showAlert" type="submit" variant="primary"
+        >Submit</b-button
+      >
     </b-form>
   </div>
 </template>
@@ -55,7 +65,9 @@ export default {
         name: '',
         age: 0,
         species: null
-      }
+      },
+      dismissSecs: 5,
+      dismissCountDown: 0
     }
   },
   computed: {
@@ -82,6 +94,12 @@ export default {
         age: 0,
         species: null
       }
+    },
+    countDownChanged (dismissCountDown) {
+      this.dismissCountDown = dismissCountDown
+    },
+    showAlert () {
+      this.dismissCountDown = this.dismissSecs
     }
   }
 }
