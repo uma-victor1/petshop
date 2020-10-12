@@ -2,10 +2,10 @@
   <div class="table">
     <h1>Cats page</h1>
     <b-container>
-      <b-table responsive striped hover :items="cats">
+      <b-table responsive striped hover :items="cat">
         <template v-slot:cell(name)="data">
           <!-- `data.value` is the value after formatted by the Formatter -->
-          <router-link :to="`/pets/cats/${data.index}`">{{
+          <router-link :to="`/pets/cat/${data.index}`">{{
             data.value
           }}</router-link>
         </template>
@@ -19,7 +19,7 @@ import { mapState } from 'vuex'
 
 export default {
   computed: {
-    ...mapState(['cats'])
+    ...mapState(['cat'])
   }
 }
 </script>

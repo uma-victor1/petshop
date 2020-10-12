@@ -1,5 +1,5 @@
 export default {
-  cats: [
+  cat: [
     {
       name: 'Fish',
       breed: 'tuxedo',
@@ -45,7 +45,7 @@ export default {
       notes: 'Super friendly'
     }
   ],
-  dogs: [
+  dog: [
     {
       name: 'Sheeba',
       breed: 'collie',

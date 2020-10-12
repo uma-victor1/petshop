@@ -1,15 +1,17 @@
 <template>
   <div class="home">
-    <p>Adopt a cat</p>
+    <h1>Adopt a new pet.</h1>
+    <p>There are currently {{petno}} available</p>
     <div class="adopt">
       <img
         src="../assets/relaxed-cat-looking-camera-golden-260nw-632318627.jpg"
         alt="cute cat"
       />
     </div>
+
     <b-button @click="toggleForm" size="lg">Add a Pet</b-button>
 
-     <b-form @submit.prevent="SubmitForm" v-if="isFormOpen">
+    <b-form @submit.prevent="SubmitForm" v-if="isFormOpen">
       <b-form-group id="input-group-2" label="Pets Name:" label-for="input-2">
         <b-form-input
           id="input-2"
@@ -23,7 +25,7 @@
         <b-form-select
           id="input-3"
           v-model="formData.species"
-          :options="['cats', 'dogs']"
+          :options="['cat', 'dog']"
           required
         ></b-form-select>
       </b-form-group>
@@ -38,14 +40,13 @@
       </b-form-group>
 
       <b-button type="submit" variant="primary">Submit</b-button>
-      <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   data () {
     return {
@@ -56,6 +57,9 @@ export default {
         species: null
       }
     }
+  },
+  computed: {
+    ...mapGetters(['petno'])
   },
   methods: {
     ...mapActions(['addPet']),
@@ -72,6 +76,12 @@ export default {
         }
       }
       this.addPet(payload)
+
+      this.formData = {
+        name: '',
+        age: 0,
+        species: null
+      }
     }
   }
 }
