@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/60e19d17-b44a-4ec0-9249-86e84d9e8070/deploy-status)](https://app.netlify.com/sites/eager-hugle-c5653b/deploys)
 # vueapp
 
 ## Project setup

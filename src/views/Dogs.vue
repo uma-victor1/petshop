@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="table">
     <h1>Dogs page</h1>
     <b-container>
       <b-table responsive striped hover :items="dog">
@@ -25,4 +25,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.table {
+  overflow-x: auto;
+}
 </style>
